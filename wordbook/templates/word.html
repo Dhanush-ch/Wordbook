@@ -1,0 +1,51 @@
+{% extends 'generic.html' %}
+{% load static %}
+
+{% block title %}{{results.word|title}} | Definition of {{results.word}}{% endblock %}
+
+<!-- <link rel="stylesheet" href="{% static '/css/style.css' %}"> -->
+
+{% block content %}
+<div class="container">
+        <div class="TITLE">
+            <h2> {{ results.word | title }} </h2>
+        <br>
+        </div>
+        <div class="content">
+        
+            <div class = "DEFINITION">
+            <p>
+                <b>Meaning: </b>
+                {% for m in results.meaning %}
+                <ul>
+                    <li>{{m}}</li>
+                </ul>
+                {% endfor %}
+                
+            </p>
+            <br>
+            </div>
+    
+        <p>
+            <b>Tam_meaning: </b> {{results.tam_meaning}}.
+        </p>
+        <br/>
+        <p>
+            <b>Other related words:  </b>
+            <br/>
+            {% for s in se %}
+            <ul>
+                <li><a href="/word?word={{s}}">{{s}}</a></li>
+            </ul>
+            {% endfor %}
+        </p>
+    </div>
+    <!-- <br>
+    <p>
+        <b>Antonyms: </b>
+        {% for a in ae %}
+        <a href="/word?word={{a}}">{{a}}</a>,
+        {% endfor %}
+    </p> -->
+</div>
+{% endblock %}
