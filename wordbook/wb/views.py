@@ -10,6 +10,9 @@ def word(request):
 
     word = request.GET['word']
 
+    if word == '':
+        return render(request, 'generic.html')
+
     # the site your are scrapping may be banning the standard header sent by python. 
     # Look into sending a header with a different user agent
     headers = {"User-Agent": "'User-agent': 'Chrome/5.0'",}
@@ -22,23 +25,33 @@ def word(request):
         soup = bs4.BeautifulSoup(res.text, 'lxml')
 
         meaning = soup.find_all('span', {'class': 'DEFINITION'})
-        meaning1 = meaning[0].getText
-        meaningg = meaning[1].getText
 
-    else:
-        word = 'Sorry, '+ word + ' Is Not Found In Our Database'
-        meaning = ''
         meaning1 = ''
+        meaningg = ''
+            
+        if meaning:
+            meaning1 = meaning[0].getText
+            meaningg = meaning[1].getText
+        elif len(meaning) == 1:
+            meaning1 = meaning[0].getText
+        elif len(meaning) == 1:
+            meaningg = meaning[1].getText
+        else:
+            word = 'Sorry, '+ word + ' Is Not Found In Our Database'
+            meaning = ''
+            meaning1 = ''
 
     if res3:
         soup = bs4.BeautifulSoup(res3.text, 'lxml')
         tam_meaning = soup.find_all('td', {'class': 'text_blue'})
         tam_meaning01 = soup.find_all('td', {'class': 'text'})
+
         if tam_meaning:
             meaning01 = tam_meaning[1].getText()
+
         else:
             meaning01 = ''
-        if tam_meaning01:
+        if tam_meaning:
             meaning02 = tam_meaning01[1].getText()
         else:
             meaning02 = ''
@@ -53,6 +66,20 @@ def word(request):
     #     meaning01 = ''
     #     meaning02 = ''
     #     tam = ''
+
+    if res2:
+        soup3 = bs4.BeautifulSoup(res2.text, 'lxml')
+
+        antonyms = soup3.find_all('a',{'class': 'css-15bafsg eh475bn0'}) 
+        #synonyms1 = synonyms.find('ul')
+        sss = []
+        for b in antonyms[0:4]:
+            # re = b.text.strip()
+            re = b.text
+            sss.append(re)
+        sv = sss
+    else:
+        sv = ''
 
 
 
@@ -91,4 +118,4 @@ def word(request):
         'tam_meaning': tam,
     }
 
-    return render(request, 'word.html', {'se': se, 'results': results})
+    return render(request, 'word.html', {'se': se, 'results': results, 'sv': sv})

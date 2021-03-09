@@ -8,6 +8,9 @@
   <title>{% block title %}WordBook{% endblock %} </title>
   <link rel="shortcut icon" href="{% static '/images/favicon_created_by_logaster%20(1).ico' %}">
 
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="stylesheet" href="{% static '/css/style.css' %}">
@@ -24,7 +27,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="body">
 
   <!-- Navigation -->
   <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
@@ -49,40 +52,66 @@
     </div>
   </nav> -->
 
+
+<!-- Top-page -->
+
+<div class="top-page">
   <header class="bg-primary text-white">
     <div class="containerr text-center">
-      <h1>WORDBOOK</h1>
-      <p class="lead">Icon/something to be inserted</p>
+      <div class="main-logo">
+        <div>
+          <a class="main-ico" href="/">
+          <img class="main-img" src="{% static '/images/favicon_96x96_created_by_logaster.png' %}" alt="image-not-found">
+          </a>
+        </div>
+      </div>
+      <p class="lead"><h3><strong>WORDBOOK</strong></h3></p>
 	  <form class="signup-form form-inline justify-content-center pt-3" action="word">
 		<div class="form-group">
-			<label class="sr-only" for="semail">Enter Your Word</label>
+        <label class="sr-only" for="semail"></label>
 			<input type="text" id="semail" name="word" class="form-control mr-md-1 semail" placeholder="Enter Your Word..">
 		</div>
-		<button type="submit" class="btn btn-primary">Search</button>
-	</form>
+      <button id="searchh" type="submit" class="btn btn-1">Search</button>
+	  </form>
     </div>
   </header>
 
-  <section id="about">
+</div>
+  
+<!-- Content -->
+<div class="content">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2>Changes to be made:</h2>
-		  <ul>
-			  <li>Add definition in one more language</li>
-			  <li>add trending/new words list</li>
-			  <li>Add word pronounciation widget voice/speaker</li>
-			  <li>Add users signin/signout</li>
-			  <li>Adding user definition functionality and reviewing them to add to dictionary</li>
-		  </ul>
+       <!-- <div class="row">
+        <div class="col-lg-8 mx-auto"> 
+          <div class="card">
+            <div class="card-header">
+                Changes to be made:
+            </div>
+            <div class="card-body">
+              <div class="card-text">
+                <ul>
+                  <li>Add definition in one more language</li>
+                  <li>add trending/new words list</li>
+                  <li>Add word pronounciation widget voice/speaker</li>
+                  <li>Add users signin/signout</li>
+                  <li>Adding user definition functionality and reviewing them to add to dictionary</li>
+                </ul>
+
+              </div>
+            </div> 
+           
+		  
+
+          </div> -->
+          
           <!-- <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p> -->
           {% block content %}
 			
 		  {% endblock %}
-		</div>
-      </div>
-    </div>
-  </section>
+		 </div>
+      <!-- </div> 
+    </div> -->
+</div>
 
   <!-- <section id="services" class="bg-light">
     <div class="container">
@@ -106,13 +135,13 @@
     </div>
   </section> -->
 
-  <!-- Footer -->
+  <!-- Footer
   <footer class="py-5 bg-dark">
     <div class="containerrr">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
     </div>
-    <!-- /.container -->
-  </footer>
+     /.container
+  </footer> -->
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>

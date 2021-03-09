@@ -7,39 +7,94 @@
 
 {% block content %}
 <div class="container">
-        <div class="TITLE">
-            <h2> {{ results.word | title }} </h2>
-        <br>
+        <div class="title">
+            <h2> {{ results.word | title }} </h2> <br/>
         </div>
         <div class="content">
-        
-            <div class = "DEFINITION">
-            <p>
-                <b>Meaning: </b>
-                {% for m in results.meaning %}
-                <ul>
-                    <li>{{m}}</li>
-                </ul>
-                {% endfor %}
-                
-            </p>
-            <br>
+            <div class="card">
+                <!-- <div class="card-header">
+                   
+                </div> -->
+                <div class="card-body">
+                    <div class="card-text">
+                        
+                            <b>Definition: </b> <br/> <br/>
+                            
+                           {% for m in results.meaning %}
+                           <p>
+                               <ul>
+                                   <li>  
+                                    {{m}}
+                                   </li>
+                               </ul>
+                           
+
+                           </p>
+                                
+                                
+                           {% endfor %}
+                           
+                           
+                        <br>
+                    </div>
+                </div>
             </div>
-    
-        <p>
-            <b>Tam_meaning: </b> {{results.tam_meaning}}.
-        </p>
-        <br/>
-        <p>
-            <b>Other related words:  </b>
-            <br/>
-            {% for s in se %}
-            <ul>
-                <li><a href="/word?word={{s}}">{{s}}</a></li>
-            </ul>
-            {% endfor %}
-        </p>
-    </div>
+
+            <div class="card">
+                <!-- <div class="card-header">
+                   
+                </div> -->
+                <div class="card-body">
+                    <div class="card-text">
+                        <b>சொற்பொருள் விளக்கம்: </b> <br/> <br/> 
+                        <p>
+                            &emsp; &emsp;
+                             {{results.tam_meaning}}
+                        </p>
+                        <br/>
+                    </div>
+                </div>
+            </div>   
+
+           <div class="card">
+                <div class="card-body">
+                    <div class="card-text">
+                        <b>Other related words: </b>
+                        <p>
+                            <br/>
+                            {% for s in se %}
+                            <ul>
+                                <li><a class="link-text" href="/word?word={{s}}">{{s}}</a></li>
+                            </ul>
+                            {% endfor %}
+                        </p>
+                        <br/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-text">
+                        <b>Antonyms: </b> 
+                        <p>
+                            <br/>
+                            {% for s in sv %}
+                            <ul>
+                                <li>{{s}}</li>
+                            </ul>
+                            
+                            {% endfor %}
+                        </p>            
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            
+        
+            
+        
     <!-- <br>
     <p>
         <b>Antonyms: </b>
@@ -47,5 +102,4 @@
         <a href="/word?word={{a}}">{{a}}</a>,
         {% endfor %}
     </p> -->
-</div>
 {% endblock %}
